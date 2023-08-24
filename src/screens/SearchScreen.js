@@ -6,7 +6,7 @@ import RestaurantsList from '../components/RestaurantsList';
 
 
 
-const SearchScreen = () => {
+const SearchScreen = ({navigation}) => {
     const [term, setTerm] = useState('') // search term verileri için callback! 
     const [searchApi, restaurants, errorMessage] =useRestaurants(); // UseRestaurants hookstan return!! 
 
@@ -25,13 +25,20 @@ const SearchScreen = () => {
                 onTermSubmit={() => searchApi(term)}
             />
             {errorMessage ? <Text>{errorMessage}</Text> : null}
-            <Text>
-                we have found {restaurants.length} results
-            </Text>
+          
             <ScrollView>
-            <RestaurantsList restaurants={filterRestaurantsByPrice('$')} title ="Cost Effective" />
-            <RestaurantsList restaurants={filterRestaurantsByPrice('$$')} title="Bit Pricier" />
-            <RestaurantsList restaurants={filterRestaurantsByPrice('$$$')} title="Big Spender" />
+            <RestaurantsList restaurants={filterRestaurantsByPrice('$')} 
+            title ="Cost Effective" 
+            navigation ={navigation}
+            />
+            <RestaurantsList restaurants={filterRestaurantsByPrice('$$')} 
+            title="Bit Pricier" 
+            navigation ={navigation}
+            />
+            <RestaurantsList restaurants={filterRestaurantsByPrice('$$$')} 
+            title="Big Spender"
+            navigation ={navigation}
+             />
             </ScrollView>
         </>
     )

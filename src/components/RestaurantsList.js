@@ -1,8 +1,8 @@
 import React from "react";
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import RestaurantsDetail from './RestaurantsDetail'
 
-const RestaurantsList = ({title, restaurants}) => {
+const RestaurantsList = ({title, restaurants, navigation}) => {
     return(
         <View style={styles.container} >
             <Text style={styles.titleStyle} >
@@ -13,9 +13,12 @@ const RestaurantsList = ({title, restaurants}) => {
                 showsHorizontalScrollIndicator ={false}
                 data = {restaurants}   
                 keyExtractor={(restaurant)=>restaurant.id}//key extractor flatlistte key-value yapısını sağlar
-                renderItem = {
-                    ({item})=>{
-                        return <RestaurantsDetail restaurant={item} />
+                renderItem = {({item})=>{
+                        return (
+                        <TouchableOpacity onPress={()=>navigation.navigate('RestaurantsShow')}>
+                        <RestaurantsDetail restaurant={item} />
+                        </TouchableOpacity>
+                        )
                     }
                 }
             />
