@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'//icon kütüphanesi
 
-const SearchBar = ({term, onTermChange}) => {//to pass parent Component
+const SearchBar = ({term, onTermChange, onTermSubmit}) => {//to pass parent Component
     return (
         <View style={styles.backgroundStyle}> 
             <Ionicons name="search-sharp" style = {styles.searchIconStyle} />
@@ -10,9 +10,9 @@ const SearchBar = ({term, onTermChange}) => {//to pass parent Component
             autoCorrect = {false}
             autoCapitalize='none'
             value ={term}
-            onChangeText={newTerm => onTermChange(newTerm)}
+            onChangeText={onTermChange}
             style={styles.inputStyle} 
-            onEndEditing={() => alert("submitted")}
+            onEndEditing={onTermSubmit}
             placeholder='Search'/> 
         </View>
     )
