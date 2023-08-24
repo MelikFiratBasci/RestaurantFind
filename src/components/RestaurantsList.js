@@ -1,9 +1,12 @@
 import React from "react";
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
-import { withNavigation } from "react-navigation";//child componentte navigation yapıldı
+import { withNavigation } from "react-navigation";//child componentte navigation yapıldı // With Navigation Helper!
 import RestaurantsDetail from './RestaurantsDetail'
 
 const RestaurantsList = ({title, restaurants, navigation}) => {
+    if(!restaurants.length){
+        return null;
+    }
     return(
         <View style={styles.container} >
             <Text style={styles.titleStyle} >
@@ -16,7 +19,7 @@ const RestaurantsList = ({title, restaurants, navigation}) => {
                 keyExtractor={(restaurant)=>restaurant.id}//key extractor flatlistte key-value yapısını sağlar
                 renderItem = {({item})=>{
                         return (
-                        <TouchableOpacity onPress={()=>navigation.navigate('RestaurantsShow')}>
+                        <TouchableOpacity onPress={()=>navigation.navigate('RestaurantsShow',{id: item.id})}>
                         <RestaurantsDetail restaurant={item} />
                         </TouchableOpacity>
                         )//child componentte navigation yapıldı
