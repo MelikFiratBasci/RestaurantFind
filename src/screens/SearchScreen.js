@@ -6,7 +6,7 @@ import RestaurantsList from '../components/RestaurantsList';
 
 
 
-const SearchScreen = ({navigation}) => {
+const SearchScreen = () => {
     const [term, setTerm] = useState('') // search term verileri için callback! 
     const [searchApi, restaurants, errorMessage] =useRestaurants(); // UseRestaurants hookstan return!! 
 
@@ -29,18 +29,15 @@ const SearchScreen = ({navigation}) => {
             <ScrollView>
             <RestaurantsList restaurants={filterRestaurantsByPrice('$')} 
             title ="Cost Effective" 
-            navigation ={navigation}
             />
             <RestaurantsList restaurants={filterRestaurantsByPrice('$$')} 
             title="Bit Pricier" 
-            navigation ={navigation}
             />
             <RestaurantsList restaurants={filterRestaurantsByPrice('$$$')} 
             title="Big Spender"
-            navigation ={navigation}
              />
             </ScrollView>
-        </>
+        </>//child componentte navigation yapıldı
     )
 }
 const styles = StyleSheet.create({});

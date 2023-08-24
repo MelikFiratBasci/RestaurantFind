@@ -1,5 +1,6 @@
 import React from "react";
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import { withNavigation } from "react-navigation";//child componentte navigation yapıldı
 import RestaurantsDetail from './RestaurantsDetail'
 
 const RestaurantsList = ({title, restaurants, navigation}) => {
@@ -18,7 +19,7 @@ const RestaurantsList = ({title, restaurants, navigation}) => {
                         <TouchableOpacity onPress={()=>navigation.navigate('RestaurantsShow')}>
                         <RestaurantsDetail restaurant={item} />
                         </TouchableOpacity>
-                        )
+                        )//child componentte navigation yapıldı
                     }
                 }
             />
@@ -39,4 +40,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default RestaurantsList;
+export default withNavigation(RestaurantsList);//child componentte navigation yapıldı
