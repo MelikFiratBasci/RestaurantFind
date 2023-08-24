@@ -4,12 +4,13 @@ import RestaurantsDetail from './RestaurantsDetail'
 
 const RestaurantsList = ({title, restaurants}) => {
     return(
-        <View>
+        <View style={styles.container} >
             <Text style={styles.titleStyle} >
                 {title}
             </Text>
             <FlatList 
                 horizontal = {true}
+                showsHorizontalScrollIndicator ={false}
                 data = {restaurants}   
                 keyExtractor={(restaurant)=>restaurant.id}//key extractor flatlistte key-value yapısını sağlar
                 renderItem = {
@@ -27,6 +28,11 @@ const styles = StyleSheet.create({
     titleStyle: {
         fontSize :18,
         fontWeight: 'bold',
+        marginLeft :15,  
+        marginBottom:5,
+    },
+    container :{
+        marginBottom :10,
     }
 })
 

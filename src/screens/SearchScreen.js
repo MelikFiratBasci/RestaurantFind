@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import SearchBar from '../components/searchBar';
 import useRestaurants from '../hooks/useRestaurants';
 import RestaurantsList from '../components/RestaurantsList';
@@ -18,7 +18,7 @@ const SearchScreen = () => {
     }
 
     return (
-        <View>
+        <View >
             <SearchBar
                 term={term}
                 onTermChange={newTerm => setTerm(newTerm)}
@@ -28,10 +28,11 @@ const SearchScreen = () => {
             <Text>
                 we have found {restaurants.length} results
             </Text>
+            <ScrollView>
             <RestaurantsList restaurants={filterRestaurantsByPrice('$')} title ="Cost Effective" />
             <RestaurantsList restaurants={filterRestaurantsByPrice('$$')} title="Bit Pricier" />
             <RestaurantsList restaurants={filterRestaurantsByPrice('$$$')} title="Big Spender" />
-
+            </ScrollView>
         </View>
     )
 }
