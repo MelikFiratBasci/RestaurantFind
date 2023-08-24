@@ -16,9 +16,9 @@ const SearchScreen = () => {
         })
 
     }
-
+//ekrana düzgün yayılması için flex
     return (
-        <View >
+        <>
             <SearchBar
                 term={term}
                 onTermChange={newTerm => setTerm(newTerm)}
@@ -33,7 +33,7 @@ const SearchScreen = () => {
             <RestaurantsList restaurants={filterRestaurantsByPrice('$$')} title="Bit Pricier" />
             <RestaurantsList restaurants={filterRestaurantsByPrice('$$$')} title="Big Spender" />
             </ScrollView>
-        </View>
+        </>
     )
 }
 const styles = StyleSheet.create({});
